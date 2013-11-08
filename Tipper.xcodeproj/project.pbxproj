@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1F2BE4182D903E00CD570B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F2BE3182D903E00CD570B /* Storyboard.storyboard */; };
+		4D1F2BE7182D90B000CD570B /* TPCodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F2BE6182D90B000CD570B /* TPCodeScannerViewController.m */; };
+		4D1F2BE9182D914000CD570B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1F2BE8182D914000CD570B /* AVFoundation.framework */; };
 		4DE7788418242AEF0049F301 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE7788318242AEF0049F301 /* Foundation.framework */; };
 		4DE7788618242AEF0049F301 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE7788518242AEF0049F301 /* CoreGraphics.framework */; };
 		4DE7788818242AEF0049F301 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE7788718242AEF0049F301 /* UIKit.framework */; };
@@ -32,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D1F2BE3182D903E00CD570B /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		4D1F2BE5182D90B000CD570B /* TPCodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCodeScannerViewController.h; sourceTree = "<group>"; };
+		4D1F2BE6182D90B000CD570B /* TPCodeScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCodeScannerViewController.m; sourceTree = "<group>"; };
+		4D1F2BE8182D914000CD570B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4DE7788018242AEF0049F301 /* Tipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE7788318242AEF0049F301 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DE7788518242AEF0049F301 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D1F2BE9182D914000CD570B /* AVFoundation.framework in Frameworks */,
 				4DE7788618242AEF0049F301 /* CoreGraphics.framework in Frameworks */,
 				4DE7788818242AEF0049F301 /* UIKit.framework in Frameworks */,
 				4DE7788418242AEF0049F301 /* Foundation.framework in Frameworks */,
@@ -96,6 +104,7 @@
 		4DE7788218242AEF0049F301 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D1F2BE8182D914000CD570B /* AVFoundation.framework */,
 				4DE7788318242AEF0049F301 /* Foundation.framework */,
 				4DE7788518242AEF0049F301 /* CoreGraphics.framework */,
 				4DE7788718242AEF0049F301 /* UIKit.framework */,
@@ -111,6 +120,9 @@
 				4DE7789318242AEF0049F301 /* TPAppDelegate.m */,
 				4DE7789518242AEF0049F301 /* Images.xcassets */,
 				4DE7788A18242AEF0049F301 /* Supporting Files */,
+				4D1F2BE3182D903E00CD570B /* Storyboard.storyboard */,
+				4D1F2BE5182D90B000CD570B /* TPCodeScannerViewController.h */,
+				4D1F2BE6182D90B000CD570B /* TPCodeScannerViewController.m */,
 			);
 			path = Tipper;
 			sourceTree = "<group>";
@@ -222,6 +234,7 @@
 			files = (
 				4DE7788E18242AEF0049F301 /* InfoPlist.strings in Resources */,
 				4DE7789618242AEF0049F301 /* Images.xcassets in Resources */,
+				4D1F2BE4182D903E00CD570B /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +255,7 @@
 			files = (
 				4DE7789418242AEF0049F301 /* TPAppDelegate.m in Sources */,
 				4DE7789018242AEF0049F301 /* main.m in Sources */,
+				4D1F2BE7182D90B000CD570B /* TPCodeScannerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +456,7 @@
 				4DE778AE18242AF00049F301 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DE778AF18242AF00049F301 /* Build configuration list for PBXNativeTarget "TipperTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +465,7 @@
 				4DE778B118242AF00049F301 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
