@@ -38,6 +38,7 @@
         return nil;
 
     _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[self baseURL]];
+    _sessionManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:0];
     _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
 
     return self;
