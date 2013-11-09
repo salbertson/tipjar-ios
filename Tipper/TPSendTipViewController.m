@@ -44,6 +44,7 @@
     return ^(NSDictionary *response, NSError *error) {
         if (!response) {
             NSLog(@"Error creating tip. %@, %@", error, error.userInfo);
+            return;
         }
 
         NSLog(@"Successfully sent tip with amount: %u", amount);
