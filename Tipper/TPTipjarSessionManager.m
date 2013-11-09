@@ -86,7 +86,7 @@
 
 - (NSURL *)baseURL;
 {
-    return [NSURL URLWithString:@"http://192.168.4.158:3000/api/"];
+    return [NSURL URLWithString:@"http://tiptip.herokuapp.com/api/"];
 }
 
 @end
