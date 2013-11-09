@@ -8,11 +8,15 @@
 
 #import "TPCodeScannerViewController.h"
 @import AVFoundation;
+#import "TPUser.h"
+#import "TPSendTipViewController.h"
+#import "TPTipjarSessionManager.h"
+
+static NSString *const TPSendTipViewControllerStoryboardIdentifier = @"TPSendTipViewController";
 
 @interface TPCodeScannerViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
 @property (strong, nonatomic) AVCaptureSession *captureSession;
-@property (strong, nonatomic) AVMetadataMachineReadableCodeObject *capturedObject;
 
 @end
 
@@ -43,6 +47,11 @@
     previewLayer.frame = self.view.bounds;
 
     [self.view.layer addSublayer:previewLayer];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self.captureSession startRunning];
 }
 
@@ -50,15 +59,11 @@
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
-    if (self.capturedObject)
-        return;
-
     if ([metadataObjects count] == 0)
         return;
 
-    self.capturedObject = [metadataObjects firstObject];
-
-    NSLog(@"%@", [self.capturedObject stringValue]);
+    [self.captureSession stopRunning];
+    [self validateCapturedObject:[metadataObjects firstObject]];
 }
 
 #pragma mark - API
@@ -85,15 +90,39 @@
     if (!deviceInput)
         NSLog(@"Error creating input device: %@, %@", error, error.userInfo);
 
-    [_captureSession addInput:deviceInput];
+    [self.captureSession addInput:deviceInput];
 }
 
 - (void)addMetadataCaptureDeviceOutput
 {
     AVCaptureMetadataOutput *output = [[AVCaptureMetadataOutput alloc] init];
     [output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
-    [_captureSession addOutput:output];
+    [self.captureSession addOutput:output];
     output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode];
+}
+
+#pragma mark Validating Codes
+
+- (void)validateCapturedObject:(AVMetadataMachineReadableCodeObject *)capturedObject
+{
+    [[TPTipjarSessionManager sharedManager] GETTipCodeWithIdentifier:[capturedObject stringValue] completionBlock:^(NSDictionary *response, NSError *error) {
+        if (!response) {
+            NSLog(@"Error getting tip code with identifier: %@.\n%@, %@", [capturedObject stringValue], error, error.userInfo);
+            return;
+        }
+
+        TPUser *user = [[TPUser alloc] initWithJSON:response];
+        [self pushSendTipViewControllerForUser:user];
+    }];
+}
+
+#pragma mark Pushing the Send Tip View Controller
+
+- (void)pushSendTipViewControllerForUser:(TPUser *)user
+{
+    TPSendTipViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:TPSendTipViewControllerStoryboardIdentifier];
+    viewController.tipReceiver = user;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
